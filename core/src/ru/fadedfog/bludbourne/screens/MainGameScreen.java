@@ -1,4 +1,4 @@
-package ru.fadedfog.bludbourne.screen;
+package ru.fadedfog.bludbourne.screens;
 
 import com.badlogic.gdx.Screen;
 
