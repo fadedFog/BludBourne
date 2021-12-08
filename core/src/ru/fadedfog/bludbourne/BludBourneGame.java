@@ -1,26 +1,23 @@
 package ru.fadedfog.bludbourne;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.Game;
 
-public class BludBourneGame extends ApplicationAdapter {
-	SpriteBatch batch;
+import ru.fadedfog.bludbourne.screens.MainGameScreen;
+
+public class BludBourneGame extends Game {
+	public static final MainGameScreen mainGameScreen = new MainGameScreen();
 	
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
+		setScreen(mainGameScreen);
 	}
 
 	@Override
 	public void render () {
-		ScreenUtils.clear(1, 0, 0, 1);
-		batch.begin();
-		batch.end();
 	}
 	
 	@Override
 	public void dispose () {
-		batch.dispose();
+		mainGameScreen.dispose();
 	}
 }
