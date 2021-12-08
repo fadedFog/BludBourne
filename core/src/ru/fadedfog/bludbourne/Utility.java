@@ -10,7 +10,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 
 public class Utility {
 	private static final String TAG = Utility.class.getSimpleName();
-	private InternalFileHandleResolver filePathResolver = new InternalFileHandleResolver();
+	private static InternalFileHandleResolver filePathResolver = new InternalFileHandleResolver();
 	public static final AssetManager assetManager = new AssetManager();
 
 	public void unloadAsset(String assetFileNamePath) {
@@ -38,7 +38,7 @@ public class Utility {
 		return assetManager.isLoaded(fileName);
 	}
 	
-	public void loadMapAsset(String mapFileNamePath) {
+	public static void loadMapAsset(String mapFileNamePath) {
 		if (mapFileNamePath == null || mapFileNamePath.isEmpty()) {
 			return;
 		}
@@ -53,7 +53,7 @@ public class Utility {
 		}
 	}
 	
-	public TiledMap getMapAsset(String mapFileNamePath) {
+	public static TiledMap getMapAsset(String mapFileNamePath) {
 		TiledMap map = null;
 		
 		if (assetManager.isLoaded(mapFileNamePath)) {
