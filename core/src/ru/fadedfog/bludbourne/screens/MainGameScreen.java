@@ -12,9 +12,9 @@ import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 
+import ru.fadedfog.bludbourne.Entity;
 import ru.fadedfog.bludbourne.MapManager;
 import ru.fadedfog.bludbourne.controller.PlayerController;
-import ru.fadedfog.bludbourne.entity.Entity;
 
 public class MainGameScreen implements Screen {
 	private static final String TAG = MainGameScreen.class.getSimpleName();
