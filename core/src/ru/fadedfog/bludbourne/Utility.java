@@ -13,7 +13,7 @@ public class Utility {
 	private static InternalFileHandleResolver filePathResolver = new InternalFileHandleResolver();
 	public static final AssetManager assetManager = new AssetManager();
 
-	public void unloadAsset(String assetFileNamePath) {
+	public static void unloadAsset(String assetFileNamePath) {
 		if (assetManager.isLoaded(assetFileNamePath)) {
 			assetManager.unload(assetFileNamePath);
 		} else {
@@ -65,7 +65,7 @@ public class Utility {
 		return map;
 	}
 	
-	public void loadTextureAsset(String textureFileNamePath) {
+	public static void loadTextureAsset(String textureFileNamePath) {
 		if (textureFileNamePath == null || textureFileNamePath.isEmpty()) {
 			return;
 		}
@@ -79,7 +79,7 @@ public class Utility {
 		}
 	}
 	
-	public Texture getTextureAsset(String textureFileNamePath) {
+	public static Texture getTextureAsset(String textureFileNamePath) {
 		Texture texture = null;
 		
 		if (assetManager.isLoaded(textureFileNamePath)) {
@@ -90,4 +90,5 @@ public class Utility {
 		
 		return texture;
 	}
+	
 }
