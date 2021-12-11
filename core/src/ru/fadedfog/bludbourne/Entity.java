@@ -238,5 +238,13 @@ public class Entity {
 		
 		velocity.scl(1f / deltaTime);
 	}
+
+	public static Object getEntityConfig(String playerConfig) {
+		return null;
+	}
+
+	public void setEntityConfig(Object entityConfig) {
+		
+	}
 	
 }
