@@ -38,8 +38,8 @@ public class Entity {
 	protected float frameTime = 0f;
 	protected Sprite frameSprite = null;
 	protected TextureRegion currentFrame = null;
-	public final int FRAME_WIDTH = 16;
-	public final int FRAME_HEIGHT = 16;
+	public final static int FRAME_WIDTH = 16;
+	public final static int FRAME_HEIGHT = 16;
 	public static Rectangle boundingBox; 
 	private Json json;
 	private EntityConfig entityConfig;
