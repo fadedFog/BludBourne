@@ -151,14 +151,4 @@ public abstract class PhysicsComponent implements Component{
 		}
 	}
 	
-	@Override
-	public void receiveMessage(String fullMessage) {
-		
-	}
-
-	@Override
-	public void dispose() {
-		
-	}
-
 }
