@@ -15,7 +15,8 @@ public interface Component {
 		INIT_STATE,
 		INIT_SELECT_ENTITY,
 		ENTITY_SELECTED,
-		ENTITY_DESELECTEDL
+		ENTITY_DESELECTEDL, 
+		CURRENT_DIRECTION;
 	}
 
 	void receiveMessage(String fullMessage);
