@@ -21,6 +21,13 @@ public abstract class InputComponent implements Component {
 	}
 	
 	static {
+		keys.put(Keys.LEFT, false);
+		keys.put(Keys.RIGHT, false);
+		keys.put(Keys.UP, false);
+		keys.put(Keys.DOWN, false);
+	}
+	
+	static {
 		mouseButtons.put(Mouse.SELECT, false);
 		mouseButtons.put(Mouse.DOACTION, false);
 	}
