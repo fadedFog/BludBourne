@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.utils.Array;
 
-import ru.fadedfog.bludbourne.Entity.AnimationType;
 
 public abstract class GraphicsComponent implements Component {
 	protected Hashtable<Entity.AnimationType, Animation<TextureRegion>> animations;
