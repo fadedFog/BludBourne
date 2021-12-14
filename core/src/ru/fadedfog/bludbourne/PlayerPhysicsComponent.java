@@ -1,6 +1,7 @@
 package ru.fadedfog.bludbourne;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
@@ -10,6 +11,7 @@ import com.badlogic.gdx.utils.Json;
 
 import ru.fadedfog.bludbourne.Entity.Direction;
 import ru.fadedfog.bludbourne.Entity.State;
+import ru.fadedfog.bludbourne.EntityFactory.EntityType;
 
 public class PlayerPhysicsComponent extends PhysicsComponent {
 	private static final String TAG = PlayerPhysicsComponent.class.getSimpleName();
@@ -34,13 +36,31 @@ public class PlayerPhysicsComponent extends PhysicsComponent {
 	}
 	
 	@Override
-	public void dispose() {
+	public void update(Entity entity, MapManager mapMg, float delta) {
+		updateBoundingBoxPosition(nextEntityPosition);
+		updatePortalLayerActivision(mapMg);
 		
+		if (isMouseSelectEnabled) {
+			selectMapEntityCandidate(mapMg);
+			isMouseSelectEnabled = false;
+		}
+		
+		if (!isCollisionWithMapLayer(entity, mapMg) && 
+				!isCollisionWithMapEntities(entity, mapMg) &&
+				state == Entity.State.WALKING) {
+			setNextPositionToCurrent(entity);
+			Camera camera = mapMg.getCamera();
+			camera.position.set(currentEntityPosition.x, currentEntityPosition.y, 0f);
+			camera.update();
+		} else {
+			updateBoundingBoxPosition(currentEntityPosition);
+		}
+		
+		calculateNextPostion(delta);
 	}
 	
-	@Override
-	public void update(Entity entity, MapManager mapMg, float delta) {
-
+	private boolean updatePortalLayerActivision(MapManager mapMg) {
+		return false;
 	}
 	
 	@Override
@@ -94,6 +114,12 @@ public class PlayerPhysicsComponent extends PhysicsComponent {
 				}
 			}
 		}
+	}
+	
+
+	@Override
+	public void dispose() {
+		
 	}
 	
 }
