@@ -1,5 +1,6 @@
 package ru.fadedfog.bludbourne;
 
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -18,7 +19,14 @@ public class PlayerGraphicsComponent extends GraphicsComponent {
 
 	@Override
 	public void update(Entity entity, MapManager mapMg, Batch batch, float delta) {
+		updateAnimations(delta);
+		Camera camera = mapMg.getCamera();
+		camera.position.set(currentPosition.x, currentPosition.y, 0f);
+		camera.update();
 		
+		batch.begin();
+		batch.draw(currentFrame, currentPosition.x, currentPosition.y, 1, 1);
+		batch.end();
 	}
 
 	@Override
