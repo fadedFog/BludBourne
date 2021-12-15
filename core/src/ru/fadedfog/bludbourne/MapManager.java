@@ -3,11 +3,13 @@ package ru.fadedfog.bludbourne;
 import java.util.Hashtable;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 
 public class MapManager {
 	private static final String TAG = MapManager.class.getSimpleName();
@@ -21,6 +23,7 @@ public class MapManager {
 	private static final String MAP_PORTAL_LAYER = "MAP_PORTAL_LAYER";
 	private static final String PLAYER_START = "PLAYER_START";
 	
+	private Camera camera;
 	private Vector2 playerStartPositionRect;
 	private Vector2 closestPlayerStartPosition;
 	private Vector2 convertedUtils;
@@ -148,5 +151,17 @@ public class MapManager {
 		
 		convertedUtils.set(position.x / UNIT_SCALE, position.y / UNIT_SCALE);
 		setClosestStartPosition(convertedUtils);
+	}
+
+	public Array<Entity> getCurrentMapEntities() {
+		return null;
+	}
+
+	public Camera getCamera() {
+		return camera;
+	}
+
+	public void setCamera(Camera camera) {
+		this.camera = camera;
 	}
 }
