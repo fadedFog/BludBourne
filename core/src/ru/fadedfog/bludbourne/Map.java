@@ -2,6 +2,8 @@ package ru.fadedfog.bludbourne;
 
 import java.util.Hashtable;
 
+import javax.swing.LayoutStyle.ComponentPlacement;
+
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -42,6 +44,28 @@ public abstract class Map {
 	public Map(MapType mapType, String fullMapPath) {
 		
 	}
+
+	public void updateapEntities(MapManager mapMg, Batch batch, float delta) {
+		for (int i = 0; i < mapEntities.size; i++) {
+			mapEntities.get(i).update(mapMg, batch, delta);
+		}
+	}
+	
+	private Entity initEntity(EntityConfig entityConfig, Vector2 position) {
+		Entity entity = EntityFactory.getEntity(EntityFactory.EntityType.NPC);
+		entity.setEntityConfig(entityConfig);
+		
+		entity.sendMessage(Component.MESSAGE.LOAD_ANIMATIONS, 
+				json.toJson(entity.getEntityConfig()));
+		entity.sendMessage(Component.MESSAGE.INIT_START_POSITION,
+				json.toJson(position));
+		entity.sendMessage(Component.MESSAGE.INIT_STATE,
+				json.toJson(entity.getEntityConfig().getState()));
+		entity.sendMessage(Component.MESSAGE.INIT_DIRECTION, 
+				json.toJson(entity.getEntityConfig().getDirection()));
+		
+		return entity;
+	}
 	
 	public Array<Entity> getMapEntity() {
 		return mapEntities;
@@ -49,10 +73,6 @@ public abstract class Map {
 	
 	public Vector2 getPlayerStart() {
 		return playerStart;
-	}
-	
-	public void updateapEntities(MapManager mapMg, Batch batch, float delta) {
-		
 	}
 	
 	public MapLayer getCollisionLayer() {
@@ -80,10 +100,11 @@ public abstract class Map {
 	}
 	
 	private void setClosestStartPosition(Vector2 position) {
-		
+		this.closestPlayerStartPosition = position;
 	}
 	
 	public void setClosestStartPositionFromScaledUntis(Vector2 position) {
-		
+
 	}
+	
 }
