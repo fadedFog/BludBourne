@@ -13,12 +13,12 @@ import ru.fadedfog.bludbourne.MapFactory.MapType;
 
 public abstract class Map {
 	private static final String TAG = Map.class.getSimpleName();
-	private static String mapPath = "maps/town.tmx";
-	private static String townGuardWalking = "scripts/town_guard_walking.json";
-	private static String townBlacksmith = "scripts/town_blacksmith.json";
-	private static String townMage = "scripts/town_mage.json";
-	private static String townInnKeeper = "scripts/town_innkeeper.json";
-	private static String townFolk = "scripts/town_folk.json";
+	protected static String mapPath = "maps/town.tmx";
+	protected static String townGuardWalking = "scripts/town_guard_walking.json";
+	protected static String townBlacksmith = "scripts/town_blacksmith.json";
+	protected static String townMage = "scripts/town_mage.json";
+	protected static String townInnKeeper = "scripts/town_innkeeper.json";
+	protected static String townFolk = "scripts/town_folk.json";
 	public static final float UNIT_SCALE = 1/16f;
 	protected static final String COLLISION_LAYER = "MAP_COLLISION_LAYER";
 	protected static final String SPAWNS_LAYER = "MAP_SPAWNS_LAYER";
@@ -37,14 +37,14 @@ public abstract class Map {
 	protected MapLayer portalLayer;
 	protected MapLayer spawnsLayer;
 	protected MapType currentMapType;
-	protected Array<Entity> mapEntity;
+	protected Array<Entity> mapEntities;
 	
 	public Map(MapType mapType, String fullMapPath) {
 		
 	}
 	
 	public Array<Entity> getMapEntity() {
-		return mapEntity;
+		return mapEntities;
 	}
 	
 	public Vector2 getPlayerStart() {
