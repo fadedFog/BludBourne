@@ -51,7 +51,7 @@ public abstract class Map {
 		}
 	}
 	
-	private Entity initEntity(EntityConfig entityConfig, Vector2 position) {
+	protected Entity initEntity(EntityConfig entityConfig, Vector2 position) {
 		Entity entity = EntityFactory.getEntity(EntityFactory.EntityType.NPC);
 		entity.setEntityConfig(entityConfig);
 		
@@ -65,6 +65,16 @@ public abstract class Map {
 				json.toJson(entity.getEntityConfig().getDirection()));
 		
 		return entity;
+	}
+	
+	protected Entity initSpecialEntity(EntityConfig entityConfig) {
+		Vector2 position = new Vector2(0, 0);
+		
+		if (specialNPCStartPositions.containsKey(entityConfig.getEntityId())) {
+			position = specialNPCStartPositions.get(entityConfig.getEntityId());
+		}
+		
+		return initEntity(entityConfig, position);
 	}
 	
 	public Array<Entity> getMapEntity() {

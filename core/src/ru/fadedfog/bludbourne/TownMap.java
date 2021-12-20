@@ -18,7 +18,7 @@ public class TownMap extends Map {
 		
 		mapEntities.add(initSpecialEntity(Entity.getEntityConfig(townBlacksmith)));
 		mapEntities.add(initSpecialEntity(Entity.getEntityConfig(townMage)));
-		mapEntities.add(initSpecilaEntity(Entity.getEntityConfig(townInnKeeper)));
+		mapEntities.add(initSpecialEntity(Entity.getEntityConfig(townInnKeeper)));
 		
 		Array<EntityConfig> configs = Entity.getEntityConfigs(townFolk);
 		for (EntityConfig config: configs) {
