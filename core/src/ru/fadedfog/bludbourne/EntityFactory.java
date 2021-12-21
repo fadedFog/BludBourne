@@ -3,6 +3,7 @@ package ru.fadedfog.bludbourne;
 import com.badlogic.gdx.utils.Json;
 
 public class EntityFactory {
+	private static EntityFactory instance;
 	private static Json json = new Json();
 	public static String PLAYER_CONFIG = "scripts/player.json";
 	
@@ -12,7 +13,14 @@ public class EntityFactory {
 		NPC;
 	}
 	
-	public static Entity getEntity(EntityType entityType) {
+	public static EntityFactory getInstance() {
+		if (instance == null) {
+			instance = new EntityFactory();
+		}
+		return instance;
+	}
+	
+	public Entity getEntity(EntityType entityType) {
 		Entity entity = null;
 		
 		switch(entityType) {
