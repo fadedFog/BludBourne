@@ -249,7 +249,7 @@ public class Entity {
 	}
 	
 	public Rectangle getCurrentBoundingBox() {
-		return physicsComponent.boundingBox();
+		return physicsComponent.boundingBox;
 	}
 	
 	public Vector2 getCurrentPosition() {
@@ -342,6 +342,10 @@ public class Entity {
 		}
 		
 		return configs;
+	}
+
+	public EntityConfig getEntityConfig() {
+		return entityConfig;
 	}
 	
 }
