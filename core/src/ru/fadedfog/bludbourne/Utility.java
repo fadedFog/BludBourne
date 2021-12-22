@@ -17,7 +17,7 @@ public class Utility {
 	private static InternalFileHandleResolver filePathResolver = new InternalFileHandleResolver();
 	public static final AssetManager assetManager = new AssetManager();
 	public static TextureAtlas STATUSUI_TEXTUREATLAS = new TextureAtlas(STATUSUI_TEXTURE_ATLAS_PATH);
-	public static Skin STATUS_SKIN = new Skin(Gdx.files.internal(STATUSUI_SKIN_PATH), STATUSUI_TEXTUREATLAS);
+	public static Skin STATUSUI_SKIN = new Skin(Gdx.files.internal(STATUSUI_SKIN_PATH), STATUSUI_TEXTUREATLAS);
 	
 	public static void unloadAsset(String assetFileNamePath) {
 		if (assetManager.isLoaded(assetFileNamePath)) {
