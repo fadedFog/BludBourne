@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 public class Utility {
 	private static final String TAG = Utility.class.getSimpleName();
 	private final static String STATUSUI_TEXTURE_ATLAS_PATH = "skins/statusui.atlas";
-	private final static String STATUSUI_SKIN_PATH = "skin/statusui.json";
+	private final static String STATUSUI_SKIN_PATH = "skins/statusui.json";
 	private static InternalFileHandleResolver filePathResolver = new InternalFileHandleResolver();
 	public static final AssetManager assetManager = new AssetManager();
 	public static TextureAtlas STATUSUI_TEXTUREATLAS = new TextureAtlas(STATUSUI_TEXTURE_ATLAS_PATH);
