@@ -1,0 +1,10 @@
+[
+	{
+		itemAttributes: 2
+		itemUseType: 128
+		itemUseTypeValue: 20 
+		itemTypeID: SHIELD01
+		itemShortDescription: Medium tier shield forged from copper
+		itemValue: 50
+	},
+]
