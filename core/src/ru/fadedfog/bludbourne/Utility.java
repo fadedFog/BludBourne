@@ -14,9 +14,11 @@ public class Utility {
 	private static final String TAG = Utility.class.getSimpleName();
 	private final static String STATUSUI_TEXTURE_ATLAS_PATH = "skins/statusui.atlas";
 	private final static String STATUSUI_SKIN_PATH = "skins/statusui.json";
+	private final static String ITEMS_TEXTURE_ATLAS_PATH = "skins/items.atlas";
 	private static InternalFileHandleResolver filePathResolver = new InternalFileHandleResolver();
 	public static final AssetManager assetManager = new AssetManager();
 	public static TextureAtlas STATUSUI_TEXTUREATLAS = new TextureAtlas(STATUSUI_TEXTURE_ATLAS_PATH);
+	public static TextureAtlas ITEMS_TEXTUREATLAS = new TextureAtlas(ITEMS_TEXTURE_ATLAS_PATH);
 	public static Skin STATUSUI_SKIN = new Skin(Gdx.files.internal(STATUSUI_SKIN_PATH), STATUSUI_TEXTUREATLAS);
 	
 	public static void unloadAsset(String assetFileNamePath) {
