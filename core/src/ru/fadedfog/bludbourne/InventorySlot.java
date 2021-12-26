@@ -63,7 +63,7 @@ public class InventorySlot extends Stack {
 		
 	}
 	
-	public void swapSlots(InventorySlot inventorySlotSource,
+	public static void swapSlots(InventorySlot inventorySlotSource,
 			InventorySlot inventorySlotTarget, InventoryItem dragActor) {
 		
 	}
