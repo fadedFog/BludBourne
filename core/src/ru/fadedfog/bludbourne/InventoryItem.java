@@ -1,8 +1,9 @@
 package ru.fadedfog.bludbourne;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
-public class InventoryItem {
+public class InventoryItem extends Image {
 	private int itemAttributes;
 	private int itemUseType;
 	private String itemShortDescription;
