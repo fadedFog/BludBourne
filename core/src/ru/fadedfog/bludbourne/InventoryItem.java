@@ -9,6 +9,20 @@ public class InventoryItem extends Image {
 	private String itemShortDescription;
 	private ItemTypeID itemTypeID;
 	
+    public enum ItemTypeID {
+        ARMOR01,ARMOR02,ARMOR03,ARMOR04,ARMOR05,
+        BOOTS01,BOOTS02,BOOTS03,BOOTS04,BOOTS05,
+        HELMET01,HELMET02,HELMET03,HELMET04,HELMET05,
+        SHIELD01,SHIELD02,SHIELD03,SHIELD04,SHIELD05,
+        WANDS01,WANDS02,WANDS03,WANDS04,WANDS05,
+        WEAPON01,WEAPON02,WEAPON03,WEAPON04,WEAPON05,
+        POTIONS01,POTIONS02,POTIONS03,
+        SCROLL01,SCROLL02,SCROLL03,
+        HERB001,BABY001,HORNS001,FUR001,
+        NONE
+        ;
+    }
+	
 	public InventoryItem() {
 		
 	}
@@ -60,6 +74,10 @@ public class InventoryItem extends Image {
 	
 	public boolean isStackable(InventoryItem candidateInventoryItem) {
 		return false;
+	}
+
+	public boolean isSameItemType(InventoryItem targetActor) {
+		return  itemTypeID == targetActor.getItemTypeID();
 	}
 	
 }
