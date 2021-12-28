@@ -12,9 +12,11 @@ import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 
+import ru.fadedfog.bludbourne.BludBourneGame;
 import ru.fadedfog.bludbourne.Entity;
 import ru.fadedfog.bludbourne.MapManager;
 import ru.fadedfog.bludbourne.PlayerController;
+import ru.fadedfog.bludbourne.profile.ProfileManager;
 
 public class MainGameScreen implements Screen {
 	private static final String TAG = MainGameScreen.class.getSimpleName();
@@ -36,8 +38,10 @@ public class MainGameScreen implements Screen {
 		static float aspectRatio;
 	}
 	
-	public MainGameScreen() {
+	public MainGameScreen(BludBourneGame game) {
 		mapMg = new MapManager();
+		
+		ProfileManager.getInstance().addObserver(mapMg);
 	}
 	
 	@Override

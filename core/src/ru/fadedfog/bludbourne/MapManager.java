@@ -11,7 +11,12 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
-public class MapManager {
+import ru.fadedfog.bludbourne.MapFactory.MapType;
+import ru.fadedfog.bludbourne.profile.ProfileManager;
+import ru.fadedfog.bludbourne.profile.ProfileObserver;
+import ru.fadedfog.bludbourne.profile.ProfileObserver.ProfileEvent;
+
+public class MapManager implements ProfileObserver {
 	private static final String TAG = MapManager.class.getSimpleName();
 	private Hashtable<String, String> mapTable;
 	private Hashtable<String, Vector2> playerStartLocationTable;
@@ -28,7 +33,7 @@ public class MapManager {
 	private Vector2 closestPlayerStartPosition;
 	private Vector2 convertedUtils;
 	private Vector2 playerStart;
-	private TiledMap currentMap = null;
+	private Map currentMap = null;
 	private String currentMapName;
 	private MapLayer collisionLayer = null;
 	private MapLayer portalLayer = null;
@@ -53,10 +58,10 @@ public class MapManager {
 		convertedUtils = new Vector2(0, 0);
 	}
 	
-	public void loadMap(String mapName) {
+	public void loadMap(MapType mapType) {
 		playerStart.set(0, 0);
 	
-		String mapFullPath = mapTable.get(mapName);
+		String mapFullPath = mapTable.get(mapType.name());
 	
 		if (mapFullPath == null || mapFullPath.isEmpty()) {
 			Gdx.app.debug(TAG, "Map is invalid");
@@ -70,7 +75,7 @@ public class MapManager {
 		Utility.loadMapAsset(mapFullPath);
 		if (Utility.isAssetLoaded(mapFullPath)) {
 			currentMap = Utility.getMapAsset(mapFullPath);
-			currentMapName = mapName;
+			currentMapName = mapType.name();
 		} else {
 			Gdx.app.debug(TAG, "Map not loaded!");
 			return;
@@ -104,8 +109,8 @@ public class MapManager {
 	
 	public TiledMap getCurrentMap() {
 		if (currentMap == null) {
-			currentMapName = TOWN;
-			loadMap(currentMapName);
+			currentMapName = MapType.TOWN.name();
+			loadMap(MapType.TOWN);
 		}
 		return currentMap;
 	}
@@ -151,6 +156,29 @@ public class MapManager {
 		
 		convertedUtils.set(position.x / UNIT_SCALE, position.y / UNIT_SCALE);
 		setClosestStartPosition(convertedUtils);
+	}
+	
+	@Override
+	public void onNotify(ProfileManager profileManager, ProfileEvent event) {
+		switch(event) {
+			case PROFILE_LOADED:
+				String currentMap = profileManager.getProperty("currentMapType", String.class);
+				MapFactory.MapType mapType;
+				if (currentMap == null || currentMap.isEmpty()) {
+					mapType = MapFactory.MapType.TOWN;
+				} else {
+					mapType = MapFactory.MapType.valueOf(currentMap);
+				}
+				loadMap(mapType);
+				break;
+			
+			case SAVING_PROFILE:
+				profileManager.setProperty("currentMapType", this.currentMap.currentMapType.toString());
+				break;
+			
+			default:
+				break;
+		}
 	}
 
 	public Array<Entity> getCurrentMapEntities() {
