@@ -7,7 +7,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-public class PlayerHUD  implements Screen, ProfileObserver {
+import ru.fadedfog.bludbourne.profile.ProfileObserver;
+
+public class PlayerHUD  implements Screen, ProfileObserver, ConversationGraphObserver {
 	private Stage stage;
 	private Viewport viewport;
 	private Camera camera;
